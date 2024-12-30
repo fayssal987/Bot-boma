@@ -1,0 +1,860 @@
+<html><head>
+    
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9395980644079873"
+     crossorigin="anonymous"></script>
+<base href="/">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>BOMA BOT</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background: #000000;
+    background: -webkit-linear-gradient(to bottom, #000000, #001a33);
+    background: -moz-linear-gradient(to bottom, #000000, #001a33);
+    background: -o-linear-gradient(to bottom, #000000, #001a33);
+    background: linear-gradient(to bottom, #000000, #001a33);
+    color: #00ffcc;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  #binary-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0,0,0,0.97), rgba(0,26,51,0.97));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4em;
+    z-index: 1000;
+    text-shadow: 0 0 20px #00ffcc;
+    letter-spacing: 10px;
+    animation: textGlow 2s infinite alternate, floatBinary 4s ease-in-out infinite;
+  }
+
+  @-webkit-keyframes textGlow {
+    from { text-shadow: 0 0 20px #00ffcc; }
+    to { text-shadow: 0 0 40px #00ffcc, 0 0 80px #00ffcc; }
+  }
+
+  @-moz-keyframes textGlow {
+    from { text-shadow: 0 0 20px #00ffcc; }
+    to { text-shadow: 0 0 40px #00ffcc, 0 0 80px #00ffcc; }
+  }
+
+  @keyframes textGlow {
+    from { text-shadow: 0 0 20px #00ffcc; }
+    to { text-shadow: 0 0 40px #00ffcc, 0 0 80px #00ffcc; }
+  }
+
+  @keyframes floatBinary {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  #activation-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    animation: fadeIn 1s;
+    backdrop-filter: blur(10px);
+  }
+
+  .activation-container {
+    background: linear-gradient(165deg, #002b33, #001a33);
+    padding: 40px;
+    border: 2px solid #00ffcc;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 0 80px rgba(0, 255, 204, 0.3), 
+                inset 0 0 40px rgba(0, 255, 204, 0.1);
+    transform: perspective(1000px) rotateX(0deg);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(5px);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .activation-container:hover {
+    transform: perspective(1000px) rotateX(5deg) translateY(-10px);
+    box-shadow: 0 0 100px rgba(0, 255, 204, 0.4),
+                inset 0 0 60px rgba(0, 255, 204, 0.2);
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .activation-title {
+    font-size: 2em;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 0 0 15px #00ffcc;
+    animation: glow 1.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc; }
+    to { text-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffcc, 0 0 40px #00ffcc; }
+  }
+
+  header {
+    text-align: center;
+    padding: 30px;
+    border-bottom: 3px solid #00ffcc;
+    margin-bottom: 40px;
+    background: linear-gradient(to bottom, rgba(0, 26, 51, 0.8), rgba(0, 26, 51, 0.5));
+    box-shadow: 0 0 25px rgba(0, 255, 204, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  header h1 {
+    color: #00ffcc;
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-shadow: 0 0 20px #00ffcc;
+    animation: titleGlow 2s infinite alternate;
+  }
+
+  @keyframes titleGlow {
+    from {
+      text-shadow: 0 0 20px #00ffcc;
+      transform: scale(1);
+    }
+    to {
+      text-shadow: 0 0 40px #00ffcc, 0 0 60px #00ffcc;
+      transform: scale(1.05);
+    }
+  }
+
+  header:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(0, 255, 204, 0.1),
+      transparent
+    );
+    transform: rotate(45deg);
+    animation: headerShine 3s infinite;
+  }
+
+  @keyframes headerShine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+  }
+
+  header img {
+    max-width: 250px;
+    height: auto;
+    filter: drop-shadow(0 0 15px #00ffcc);
+    transition: all 0.4s ease;
+  }
+
+  header img:hover {
+    transform: scale(1.08) rotate(2deg);
+    filter: drop-shadow(0 0 25px #00ffcc);
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+  }
+
+  .button {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    margin: 10px 0;
+    background: linear-gradient(145deg, #002b33, #001a33);
+    color: #00ffcc;
+    border: 2px solid rgba(0, 255, 204, 0.5);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 1.2em;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.2),
+                inset 0 0 10px rgba(0, 255, 204, 0.1);
+    transform-style: preserve-3d;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .button:hover {
+    border-color: #00ffcc;
+    -webkit-transform: translateY(-5px) scale(1.02);
+    -moz-transform: translateY(-5px) scale(1.02);
+    -ms-transform: translateY(-5px) scale(1.02);
+    -o-transform: translateY(-5px) scale(1.02);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 0 40px rgba(0, 255, 204, 0.4),
+                inset 0 0 20px rgba(0, 255, 204, 0.2);
+    letter-spacing: 4px;
+  }
+
+  .button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(0, 255, 204, 0.2),
+      transparent
+    );
+    transition: 0.5s;
+  }
+
+  .button:hover:before {
+    left: 100%;
+  }
+
+  .feature-page {
+    display: none;
+    text-align: center;
+    animation: fadeIn 0.8s;
+    background: linear-gradient(165deg, rgba(0, 26, 51, 0.8), rgba(0, 26, 51, 0.6));
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid rgba(0, 255, 204, 0.4);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(0, 255, 204, 0.2);
+    margin: 20px auto;
+    max-width: 800px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 18px;
+    margin: 20px 0;
+    background: linear-gradient(145deg, rgba(0, 26, 51, 0.9), rgba(0, 26, 51, 0.7));
+    border: 2px solid rgba(0, 255, 204, 0.4);
+    color: #00ffcc;
+    border-radius: 8px;
+    font-size: 1.2em;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 30px rgba(0, 255, 204, 0.2),
+                inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  input[type="text"]:focus {
+    border-color: #00ffcc;
+    transform: scale(1.02);
+    box-shadow: 0 0 40px rgba(0, 255, 204, 0.3),
+                inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .error-modal, .maintenance-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(165deg, #002b33, #001a33);
+    padding: 40px;
+    border: 3px solid #00ffcc;
+    border-radius: 15px;
+    z-index: 1001;
+    animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 0 80px rgba(0, 255, 204, 0.3);
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .maintenance-modal {
+    border-color: #ff3333;
+    box-shadow: 0 0 40px rgba(255, 51, 51, 0.4);
+  }
+
+  @keyframes modalPop {
+    from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+    to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    background: linear-gradient(165deg, rgba(0, 43, 51, 0.95), rgba(0, 26, 51, 0.95));
+    color: #00ffcc;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: all 0.4s;
+    border: 2px solid rgba(0, 255, 204, 0.4);
+    box-shadow: 0 0 40px rgba(0, 255, 204, 0.2);
+    font-size: 1em;
+    width: 250px;
+    backdrop-filter: blur(8px);
+    animation: tooltipFloat 0.3s ease-out;
+  }
+
+  @keyframes tooltipFloat {
+    from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-8px);
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 15px; }
+    header img { max-width: 180px; }
+    .activation-container { width: 85%; padding: 25px; margin: 15px; }
+    .button { font-size: 1em; padding: 15px; }
+    .activation-title { font-size: 1.6em; }
+    .tooltip .tooltiptext {
+      width: 200px;
+      font-size: 0.9em;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .button {
+      font-size: 0.9em;
+      padding: 12px;
+    }
+    
+    header h1 {
+      font-size: 2em;
+    }
+  }
+
+  @media screen and (min-width: 481px) and (max-width: 768px) {
+    .button {
+      font-size: 1em;
+      padding: 15px;
+    }
+    
+    header h1 {
+      font-size: 2.5em;
+    }
+  }
+
+  @media (hover: none) {
+    .button:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    
+    .tooltip:hover .tooltiptext {
+      display: none;
+    }
+  }
+
+  .privacy-policy {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 1002;
+    overflow-y: auto;
+    padding: 40px;
+    color: #00ffcc;
+    text-align: left;
+    line-height: 1.6;
+  }
+
+  .privacy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: linear-gradient(165deg, #002b33, #001a33);
+    padding: 40px;
+    border: 2px solid #00ffcc;
+    border-radius: 20px;
+    box-shadow: 0 0 60px rgba(0, 255, 204, 0.25);
+  }
+
+  .privacy-policy h2 {
+    color: #00ffcc;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 15px #00ffcc;
+  }
+
+  .fa-youtube {
+    color: #ff0000;
+    margin-right: 10px;
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+  }
+
+  .button:hover .fa-youtube {
+    transform: scale(1.2);
+  }
+
+  .button .fa-youtube {
+    vertical-align: middle;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tutorial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    display: none;
+  }
+
+  .tutorial-step {
+    position: absolute;
+    background: linear-gradient(165deg, #002b33, #001a33);
+    padding: 25px;
+    border: 2px solid #00ffcc;
+    border-radius: 15px;
+    color: #00ffcc;
+    max-width: 300px;
+    box-shadow: 0 0 40px rgba(0, 255, 204, 0.3);
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .tutorial-step.active {
+    display: block;
+  }
+
+  .tutorial-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tutorial-button {
+    background: linear-gradient(145deg, #002b33, #001a33);
+    color: #00ffcc;
+    border: 1px solid #00ffcc;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .tutorial-button:hover {
+    background: #00ffcc;
+    color: #001a33;
+  }
+
+  .highlight-element {
+    position: relative;
+    z-index: 2001;
+    box-shadow: 0 0 0 4px #00ffcc;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+  <div id="binary-screen">10101010</div>
+
+  <div id="activation-screen">
+    <div class="activation-container">
+      <div class="activation-title">Enter Activation Code</div>
+      <input type="text" id="activation-input" placeholder="Enter your activation code">
+      <button class="button" onclick="checkActivation()">Activate</button>
+      <p id="activation-error" style="color: #ff3333; display: none;">Invalid activation code</p>
+    </div>
+  </div>
+
+  <header>
+    <h1>BOMA BOT</h1>
+    <img src="https://a.top4top.io/p_3276fqgba1.png" alt="Logo">
+  </header>
+
+  <div class="container">
+    <div id="main-menu">
+      <div class="tooltip">
+        <button class="button" onclick="showFeature('feature1')">سبام الرسائل</button>
+        <span class="tooltiptext">إرسال رسائل متعددة تلقائياً - أداة تساعدك في إرسال رسائل متعددة بشكل آلي وفعال</span>
+      </div>
+      <div class="tooltip">
+        <button class="button" onclick="showFeature('feature2')">سبام الطلبات</button>
+        <span class="tooltiptext">إرسال طلبات صداقة بشكل تلقائي - أداة تساعد في إرسال طلبات الصداقة بشكل منظم وآلي</span>
+      </div>
+      <div class="tooltip">
+        <button class="button" onclick="showFeature('feature3')">زيادة الإعجابات</button>
+        <span class="tooltiptext">زيادة عدد الإعجابات على المنشورات - أداة تساعد في زيادة التفاعل على منشوراتك</span>
+      </div>
+      <div class="tooltip">
+        <button class="button" onclick="showFeature('feature4')">إخفاء الملف الشخصي</button>
+        <span class="tooltiptext">جعل الملف الشخصي غير مرئي للآخرين - أداة للحفاظ على خصوصية حسابك</span>
+      </div>
+      <div class="tooltip">
+        <button class="button" onclick="showFeature('feature5')">معلومات عن الرابطة</button>
+        <span class="tooltiptext">عرض تفاصيل ومعلومات عن الرابطة - تعرف على كل ما يخص خدماتنا وكيفية استخدامها</span>
+      </div>
+      <div class="tooltip">
+        <button class="button" onclick="showFeature('feature6')">مقبرة الرسائل والميكروفون</button>
+        <span class="tooltiptext">أدوات للتحكم في الرسائل والصوت - ميزات متقدمة لإدارة المحادثات والتسجيلات الصوتية</span>
+      </div>
+      <div class="tooltip">
+        <button class="button" onclick="showFeature('feature7')">إرسال البوت لأي شخص</button>
+        <span class="tooltiptext">مشاركة البوت مع مستخدمين آخرين - ساعد أصدقائك في استخدام خدماتنا</span>
+      </div>
+      <div class="tooltip">
+        <button class="button" onclick="showFeature('feature8')">إزالة البوت</button>
+        <span class="tooltiptext">حذف البوت من النظام - إزالة جميع الإعدادات والبيانات المرتبطة بالبوت</span>
+      </div>
+      <div class="tooltip">
+        <button class="button" onclick="showFeature('feature9')">إضافة حيوان أليف للاعب</button>
+        <span class="tooltiptext">إضافة حيوان أليف افتراضي لملفك الشخصي - ميزة ترفيهية لتخصيص تجربتك</span>
+      </div>
+    </div>
+
+    <div id="feature1" class="feature-page">
+      <input type="text" placeholder="Enter ID" id="id-input1">
+      <button class="button" onclick="checkId('id-input1')">Confirm</button>
+      <button class="button" onclick="showMainMenu()">Back</button>
+    </div>
+
+    <div id="feature2" class="feature-page">
+      <input type="text" placeholder="Enter ID" id="id-input2">
+      <button class="button" onclick="checkId('id-input2')">Confirm</button>
+      <button class="button" onclick="showMainMenu()">Back</button>
+    </div>
+
+    <div id="feature3" class="feature-page">
+      <input type="text" placeholder="Enter ID" id="id-input3">
+      <button class="button" onclick="checkId('id-input3')">Confirm</button>
+      <button class="button" onclick="showMainMenu()">Back</button>
+    </div>
+
+    <div id="feature4" class="feature-page">
+      <input type="text" placeholder="Enter ID" id="id-input4">
+      <button class="button" onclick="checkId('id-input4')">Confirm</button>
+      <button class="button" onclick="showMainMenu()">Back</button>
+    </div>
+
+    <div id="feature5" class="feature-page">
+      <input type="text" placeholder="Enter ID" id="id-input5">
+      <button class="button" onclick="checkId('id-input5')">Confirm</button>
+      <button class="button" onclick="showMainMenu()">Back</button>
+    </div>
+
+    <div id="feature6" class="feature-page">
+      <input type="text" placeholder="Enter ID" id="id-input6">
+      <button class="button" onclick="checkId('id-input6')">Confirm</button>
+      <button class="button" onclick="showMainMenu()">Back</button>
+    </div>
+
+    <div id="feature7" class="feature-page">
+      <input type="text" placeholder="Enter ID" id="id-input7">
+      <button class="button" onclick="checkId('id-input7')">Confirm</button>
+      <button class="button" onclick="showMainMenu()">Back</button>
+    </div>
+
+    <div id="feature8" class="feature-page">
+      <input type="text" placeholder="Enter ID" id="id-input8">
+      <button class="button" onclick="checkId('id-input8')">Confirm</button>
+      <button class="button" onclick="showMainMenu()">Back</button>
+    </div>
+
+    <div id="feature9" class="feature-page">
+      <input type="text" placeholder="Enter ID" id="id-input9">
+      <button class="button" onclick="checkId('id-input9')">Confirm</button>
+      <button class="button" onclick="showMainMenu()">Back</button>
+    </div>
+
+    <div class="tooltip">
+      <button class="button" onclick="window.open('https://youtube.com/@fadai2023?si=z8UzDOg8FiFncnYo', '_blank')">
+        <i class="fab fa-youtube"></i> 
+        &#x642;&#x646;&#x627;&#x62a;&#x646;&#x627; &#x639;&#x644;&#x649; &#x64a;&#x648;&#x62a;&#x64a;&#x648;&#x628;
+      </button>
+      <span class="tooltiptext">&#x62a;&#x627;&#x628;&#x639;&#x646;&#x627; &#x639;&#x644;&#x649; &#x642;&#x646;&#x627;&#x629; &#x627;&#x644;&#x64a;&#x648;&#x62a;&#x64a;&#x648;&#x628; &#x644;&#x644;&#x645;&#x632;&#x64a;&#x62f; &#x645;&#x646; &#x627;&#x644;&#x645;&#x62d;&#x62a;&#x648;&#x649;</span>
+    </div>
+  </div>
+
+  <div class="tooltip">
+    <button class="button" onclick="showPrivacyPolicy()">&#x633;&#x64a;&#x627;&#x633;&#x629; &#x627;&#x644;&#x62e;&#x635;&#x648;&#x635;&#x64a;&#x629;</button>
+    <span class="tooltiptext">&#x639;&#x631;&#x636; &#x633;&#x64a;&#x627;&#x633;&#x629; &#x627;&#x644;&#x62e;&#x635;&#x648;&#x635;&#x64a;&#x629; &#x648;&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x627;&#x633;&#x62a;&#x62e;&#x62f;&#x627;&#x645;</span>
+  </div>
+
+  <div id="privacy-policy" class="privacy-policy">
+    <div class="privacy-content">
+      <h2>&#x633;&#x64a;&#x627;&#x633;&#x629; &#x627;&#x644;&#x62e;&#x635;&#x648;&#x635;&#x64a;&#x629;</h2>
+      <p>&#x645;&#x631;&#x62d;&#x628;&#x627;&#x64b; &#x628;&#x643; &#x641;&#x64a; &#x633;&#x64a;&#x627;&#x633;&#x629; &#x627;&#x644;&#x62e;&#x635;&#x648;&#x635;&#x64a;&#x629; &#x627;&#x644;&#x62e;&#x627;&#x635;&#x629; &#x628;&#x646;&#x627;. &#x646;&#x62d;&#x646; &#x646;&#x644;&#x62a;&#x632;&#x645; &#x628;&#x62d;&#x645;&#x627;&#x64a;&#x629; &#x62e;&#x635;&#x648;&#x635;&#x64a;&#x62a;&#x643; &#x648;&#x628;&#x64a;&#x627;&#x646;&#x627;&#x62a;&#x643; &#x627;&#x644;&#x634;&#x62e;&#x635;&#x64a;&#x629;.</p>
+      
+      <h3>1. &#x62c;&#x645;&#x639; &#x627;&#x644;&#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62a;</h3>
+      <p>&#x646;&#x62d;&#x646; &#x646;&#x62c;&#x645;&#x639; &#x627;&#x644;&#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62a; &#x627;&#x644;&#x62a;&#x64a; &#x62a;&#x642;&#x62f;&#x645;&#x647;&#x627; &#x644;&#x646;&#x627; &#x628;&#x634;&#x643;&#x644; &#x645;&#x628;&#x627;&#x634;&#x631; &#x639;&#x646;&#x62f; &#x627;&#x633;&#x62a;&#x62e;&#x62f;&#x627;&#x645; &#x62e;&#x62f;&#x645;&#x627;&#x62a;&#x646;&#x627;.</p>
+      
+      <h3>2. &#x627;&#x633;&#x62a;&#x62e;&#x62f;&#x627;&#x645; &#x627;&#x644;&#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62a;</h3>
+      <p>&#x646;&#x633;&#x62a;&#x62e;&#x62f;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62a;&#x643; &#x644;&#x62a;&#x62d;&#x633;&#x64a;&#x646; &#x62e;&#x62f;&#x645;&#x627;&#x62a;&#x646;&#x627; &#x648;&#x62a;&#x62c;&#x631;&#x628;&#x629; &#x627;&#x644;&#x645;&#x633;&#x62a;&#x62e;&#x62f;&#x645;.</p>
+      
+      <h3>3. &#x62d;&#x645;&#x627;&#x64a;&#x629; &#x627;&#x644;&#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62a;</h3>
+      <p>&#x646;&#x62a;&#x62e;&#x630; &#x62a;&#x62f;&#x627;&#x628;&#x64a;&#x631; &#x623;&#x645;&#x646;&#x64a;&#x629; &#x645;&#x646;&#x627;&#x633;&#x628;&#x629; &#x644;&#x62d;&#x645;&#x627;&#x64a;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62a;&#x643; &#x645;&#x646; &#x627;&#x644;&#x648;&#x635;&#x648;&#x644; &#x63a;&#x64a;&#x631; &#x627;&#x644;&#x645;&#x635;&#x631;&#x62d; &#x628;&#x647;.</p>
+      
+      <h3>4. &#x645;&#x634;&#x627;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62a;</h3>
+      <p>&#x644;&#x627; &#x646;&#x634;&#x627;&#x631;&#x643; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62a;&#x643; &#x627;&#x644;&#x634;&#x62e;&#x635;&#x64a;&#x629; &#x645;&#x639; &#x623;&#x637;&#x631;&#x627;&#x641; &#x62b;&#x627;&#x644;&#x62b;&#x629; &#x62f;&#x648;&#x646; &#x645;&#x648;&#x627;&#x641;&#x642;&#x62a;&#x643;.</p>
+      
+      <button class="button" onclick="closePrivacyPolicy()">&#x625;&#x63a;&#x644;&#x627;&#x642;</button>
+    </div>
+  </div>
+
+  <div id="error-modal" class="error-modal">
+    <img src="https://g.top4top.io/p_3276rk2kr3.jpg" alt="Error" style="max-width: 200px;">
+    <p>&#x62e;&#x637;&#x623;: &#x644;&#x645; &#x64a;&#x62a;&#x645; &#x627;&#x644;&#x639;&#x62b;&#x648;&#x631; &#x639;&#x644;&#x649; &#x627;&#x644;&#x645;&#x633;&#x62a;&#x62e;&#x62f;&#x645; &#x623;&#x648; &#x627;&#x644;&#x62d;&#x633;&#x627;&#x628;. &#x62a;&#x623;&#x643;&#x62f; &#x645;&#x646; &#x625;&#x62f;&#x62e;&#x627;&#x644; ID &#x635;&#x62d;&#x64a;&#x62d; &#x648; &#x62d;&#x627;&#x648;&#x644; &#x645;&#x631;&#x629; &#x623;&#x62e;&#x631;&#x649;!</p>
+    <button class="button" onclick="closeError()">OK</button>
+  </div>
+
+  <div id="maintenance-modal" class="maintenance-modal">
+    <h2>&#x26a0;&#xfe0f; &#x627;&#x644;&#x631;&#x627;&#x628;&#x637;&#x629; &#x641;&#x64a; &#x648;&#x636;&#x639; &#x627;&#x644;&#x635;&#x64a;&#x627;&#x646;&#x629; &#x26a0;&#xfe0f;</h2>
+    <p>&#x646;&#x62d;&#x646; &#x646;&#x639;&#x62a;&#x630;&#x631; &#x639;&#x646; &#x627;&#x644;&#x623;&#x639;&#x637;&#x627;&#x644; &#x627;&#x644;&#x62a;&#x64a; &#x62a;&#x62a;&#x633;&#x628;&#x628; &#x641;&#x64a; &#x639;&#x62f;&#x645; &#x627;&#x633;&#x62a;&#x642;&#x631;&#x627;&#x631; &#x627;&#x644;&#x631;&#x627;&#x628;&#x637;&#x629;. &#x641;&#x631;&#x64a;&#x642;&#x646;&#x627; &#x64a;&#x639;&#x645;&#x644; &#x62c;&#x627;&#x647;&#x62f;&#x627;&#x64b; &#x644;&#x625;&#x635;&#x644;&#x627;&#x62d; &#x627;&#x644;&#x645;&#x634;&#x627;&#x643;&#x644; &#x648; &#x625;&#x639;&#x627;&#x62f;&#x629; &#x627;&#x644;&#x631;&#x627;&#x628;&#x637;&#x629; &#x625;&#x644;&#x649; &#x62d;&#x627;&#x644;&#x629; &#x627;&#x644;&#x639;&#x645;&#x644; &#x627;&#x644;&#x637;&#x628;&#x64a;&#x639;&#x64a;&#x629;.</p>
+    <p>&#x634;&#x643;&#x631;&#x627;&#x64b; &#x644;&#x635;&#x628;&#x631;&#x643; &#x648; &#x62a;&#x641;&#x647;&#x645;&#x643;!</p>
+    <button class="button" onclick="closeMaintenance()">OK</button>
+  </div>
+
+  <div class="tutorial-overlay">
+    <div class="tutorial-step" data-step="1">
+      <h3>مرحباً بك في BOMA BOT! 👋</h3>
+      <p>سنقوم بجولة سريعة لشرح كيفية استخدام الموقع</p>
+      <div class="tutorial-buttons">
+        <button class="tutorial-button" onclick="skipTutorial()">تخطي</button>
+        <button class="tutorial-button" onclick="nextStep()">التالي</button>
+      </div>
+    </div>
+
+    <div class="tutorial-step" data-step="2">
+      <h3>التفعيل 🔑</h3>
+      <p>أولاً، ستحتاج إلى إدخال رمز التفعيل للوصول إلى جميع الميزات</p>
+      <div class="tutorial-buttons">
+        <button class="tutorial-button" onclick="previousStep()">السابق</button>
+        <button class="tutorial-button" onclick="nextStep()">التالي</button>
+      </div>
+    </div>
+
+    <div class="tutorial-step" data-step="3">
+      <h3>الميزات المتاحة 🚀</h3>
+      <p>يمكنك استخدام العديد من الأدوات مثل سبام الرسائل، سبام الطلبات، وزيادة الإعجابات</p>
+      <div class="tutorial-buttons">
+        <button class="tutorial-button" onclick="previousStep()">السابق</button>
+        <button class="tutorial-button" onclick="nextStep()">التالي</button>
+      </div>
+    </div>
+
+    <div class="tutorial-step" data-step="4">
+      <h3>الدعم والمساعدة 💡</h3>
+      <p>يمكنك متابعة قناتنا على يوتيوب للحصول على شروحات إضافية ومساعدة</p>
+      <div class="tutorial-buttons">
+        <button class="tutorial-button" onclick="previousStep()">السابق</button>
+        <button class="tutorial-button" onclick="completeTutorial()">إنهاء</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+if (!String.prototype.includes) {
+  String.prototype.includes = function(search, start) {
+    'use strict';
+    if (typeof start !== 'number') {
+      start = 0;
+    }
+    if (start + search.length > this.length) {
+      return false;
+    } else {
+      return this.indexOf(search, start) !== -1;
+    }
+  };
+}
+
+document.addEventListener('touchstart', function() {}, {passive: true});
+
+window.onload = function () {
+  setTimeout(() => {
+    document.getElementById('binary-screen').style.display = 'none';
+    document.getElementById('activation-screen').style.display = 'flex';
+  }, 4000);
+};
+
+// Show tutorial on first visit
+if (!localStorage.getItem('tutorialComplete')) {
+  document.querySelector('.tutorial-overlay').style.display = 'block';
+  showStep(1);
+}
+
+let currentStep = 1;
+const totalSteps = 4;
+
+function showStep(step) {
+  document.querySelectorAll('.tutorial-step').forEach(el => {
+    el.classList.remove('active');
+  });
+  document.querySelector(`.tutorial-step[data-step="${step}"]`).classList.add('active');
+  
+  // Position the step near relevant elements
+  const stepElement = document.querySelector(`.tutorial-step[data-step="${step}"]`);
+  switch(step) {
+    case 1:
+      stepElement.style.top = '50%';
+      stepElement.style.left = '50%';
+      stepElement.style.transform = 'translate(-50%, -50%)';
+      break;
+    case 2:
+      stepElement.style.top = '30%';
+      stepElement.style.left = '50%';
+      stepElement.style.transform = 'translate(-50%, -50%)';
+      break;
+    case 3:
+      stepElement.style.top = '50%';
+      stepElement.style.left = '50%';
+      stepElement.style.transform = 'translate(-50%, -50%)';
+      break;
+    case 4:
+      stepElement.style.bottom = '30%';
+      stepElement.style.left = '50%';
+      stepElement.style.transform = 'translate(-50%, 0)';
+      break;
+  }
+}
+
+window.onerror = function(msg, url, lineNo, columnNo, error) {
+  console.error('Error: ' + msg + '\nURL: ' + url + '\nLine: ' + lineNo);
+  return false;
+};
+
+function checkActivation() {
+  const activationCode = document.getElementById('activation-input').value;
+  const validCode = '1';
+  if (activationCode === validCode) {
+    document.getElementById('activation-screen').style.display = 'none';
+  } else {
+    document.getElementById('activation-error').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('activation-error').style.display = 'none';
+    }, 3000);
+  }
+}
+
+function showFeature(featureId) {
+  document.getElementById('main-menu').style.display = 'none';
+  document.getElementById(featureId).style.display = 'block';
+}
+
+function showMainMenu() {
+  document.querySelectorAll('.feature-page').forEach(page => {
+    page.style.display = 'none';
+  });
+  document.getElementById('main-menu').style.display = 'block';
+}
+
+function checkId(inputId) {
+  const id = document.getElementById(inputId).value;
+  if (id.length < 8) {
+    document.getElementById('error-modal').style.display = 'block';
+  } else {
+    document.getElementById('maintenance-modal').style.display = 'block';
+  }
+}
+
+function closeError() {
+  document.getElementById('error-modal').style.display = 'none';
+}
+
+function closeMaintenance() {
+  document.getElementById('maintenance-modal').style.display = 'none';
+}
+
+function showPrivacyPolicy() {
+  document.getElementById('privacy-policy').style.display = 'block';
+}
+
+function closePrivacyPolicy() {
+  document.getElementById('privacy-policy').style.display = 'none';
+}
+
+function nextStep() {
+  if (currentStep < totalSteps) {
+    currentStep++;
+    showStep(currentStep);
+  }
+}
+
+function previousStep() {
+  if (currentStep > 1) {
+    currentStep--;
+    showStep(currentStep);
+  }
+}
+
+function skipTutorial() {
+  document.querySelector('.tutorial-overlay').style.display = 'none';
+  localStorage.setItem('tutorialComplete', 'true');
+}
+
+function completeTutorial() {
+  document.querySelector('.tutorial-overlay').style.display = 'none';
+  localStorage.setItem('tutorialComplete', 'true');
+}
+</script>
+</body></html>
